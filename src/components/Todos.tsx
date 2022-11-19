@@ -7,13 +7,14 @@ import classes from './Todos.module.css';
 type AppProps = {
     children ?: ReactNode;
     items : Todo[];
+    onRemoveTodo : (todoId : string) => void;
   }
 
 const Todos = (props : AppProps) => {
-    const {items} = props;
+    const {items, onRemoveTodo} = props;
     return (
         <ul className={classes.todos}>
-            {items.map((item) => <TodoItem todo={item} />)}
+            {items.map((item) => <TodoItem todo={item} onRemoveTodo={onRemoveTodo}/>)}
         </ul>
     );
 }
